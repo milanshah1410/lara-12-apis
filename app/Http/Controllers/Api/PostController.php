@@ -29,7 +29,7 @@ class PostController extends Controller
     public function index()
     {
         $perPage = request()->input('per_page', 10); // Default is 10 if not provided
-        $posts = Post::latest()->paginate($perPage);
+        $posts = Post::with('user')->latest()->paginate($perPage);
         return PostResource::collection($posts);
     }
 
@@ -58,7 +58,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id);
+        $post = Post::with('user')->find($id);
 
         if (!$post) {
             return response()->json(['message' => 'Post not found'], 404);
