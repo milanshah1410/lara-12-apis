@@ -11,13 +11,16 @@ use Dedoc\Scramble\Attributes\BodyParameter;
 class AuthController extends Controller
 {
     /**
-     * This is summary.
+     * Login User.
      *
-     * This is a description. In can be as large as needed and contain `markdown`.
+     * Authenticates a user using email and password credentials.
+     * Returns an access token upon successful authentication.
      *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    #[BodyParameter('email', default: 'test@example.com', example: 'user@example.com')]
-    #[BodyParameter('password', default: 'password', example: 'string')]
+    #[BodyParameter('email', default: 'test@example.com')]
+    #[BodyParameter('password', default: 'password')]
 
     public function login(Request $request)
     {

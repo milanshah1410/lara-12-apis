@@ -9,7 +9,7 @@ class PostService
 {
     public function create(array $data): Post
     {
-        return DB::transaction(fn() => Post::create($data));
+        return Post::create($data);
     }
 
     public function update(Post $post, array $data): Post
